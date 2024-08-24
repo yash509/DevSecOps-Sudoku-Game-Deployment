@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sudoku-game-deployment
+spec:
+  replicas: 6  # Number of desired replicas
+  selector:
+    matchLabels:
+      app: sudoku-game
+  template:
+    metadata:
+      labels:
+        app: sudoku-game
+    spec:
+      containers:
+      - name: sudoku-game
+        image: yash5090/sudoku-game:latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 5000
